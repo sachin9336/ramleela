@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramleela Event</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li:hover > a {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            z-index: 1000;
+        }
+
+        .dropdown a {
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .hero {
+            background-image: url('images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: rgb(252, 247, 247);
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 50px;
+            display: inline-block;
+            border-radius: 10px;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .team-container, .committee-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .team-member, .committee-member {
+            text-align: center;
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .team-member img, .committee-member img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member img:hover, .committee-member img:hover {
+            transform: scale(1.05);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input, form textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px;
+            font-size: 1em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-content h2, .hero-content p {
+            color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Adarsh Ramleela Committee Ara Khurd</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li>
+                    <a href="#">More</a>
+                    <div class="dropdown">
+                        <a href="#gallery">Gallery</a>
+                        <a href="#team">Cast & Crew</a>
+                        <a href="#committee">Committee</a>
+                        <a href="#thanks">Special Thanks</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#news">News</a>
+                        <a href="#events">Events</a>
+                        <a href="#media">Media</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Welcome to the Ramleela Celebration</h2>
+            <p>Join us to relive the epic story of Lord Rama.</p>
+            <a href="#schedule" class="btn">View Schedule</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Ramleela</h2>
+        <p>Ramleela is an annual enactment of the life of Lord Rama...</p>
+    </section>
+
+    <!-- Event Schedule -->
+    <section id="schedule">
+        <h2>Event Schedule</h2>
+        <ul>
+            <li><strong>Day 1:</strong> Introduction & The Story Begins - 7:00 PM</li>
+            <li><strong>Day 2:</strong> The Exile of Lord Rama - 7:00 PM</li>
+            <li><strong>Day 3:</strong> Hanuman's Journey to Lanka - 7:00 PM</li>
+        </ul>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <img src="event.jpeg" alt="Ramleela Scene 1">
+            <img src="e2.jpeg" alt="Ramleela Scene 2">
+        </div>
+    </section>
+
+    <!-- Cast & Crew -->
+    <section id="team">
+        <h2>Meet the Cast & Crew</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="ram.jpeg" alt="Rama">
+                <h3>Rama</h3>
+                <p>Shivam Pandey</p>
+            </div>
+            <div class="team-member">
+                <img src="sita.jpeg" alt="Sita">
+                <h3>Sita</h3>
+                <p>Played by Actor Name</p>
+            </div>
+            <div class="team-member">
+                <img src="lakhan.jpeg" alt="Lakshman">
+                <h3>Lakshman</h3>
+                <p>Pratik Dubey</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee Section (Chairman & Financier) -->
+    <section id="committee">
+        <h2>Committee Members</h2>
+        <div class="committee-container">
+            <!-- Chairman -->
+            <div class="committee-member">
+                <img src="chairman.jpeg" alt="Chairman">
+                <h3>Satya Prakash Dubey</h3>
+                <p>Chairman of Ramleela Committee</p>
+            </div>
+
+            <!-- Financier -->
+            <div class="committee-member">
+                <img src="financier.jpeg" alt="Financier">
+                <h3>Eshwar Chand Pandey</h3>
+                <p>Chief Financier of Ramleela Event</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Thanks Section -->
+    <section id="thanks">
+        <h2>Special Thanks</h2>
+        <p>We would like to extend our heartfelt gratitude to all the gram vashi (villagers) and everyone who has provided physical and financial support to make this event a success.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Ramleela Committee. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
