@@ -14,7 +14,7 @@
             background-color: #f4f4f4;
         }
 
-        /* General styling for header */
+      /* General styling for header */
 header {
     display: flex;
     justify-content: space-between;
@@ -73,7 +73,7 @@ nav ul li:hover .dropdown {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    z-index: 6; /* Ensure it stays above other elements */
+    z-index: 6; /* Ensures it stays above other elements */
 }
 
 .hamburger span {
@@ -90,6 +90,7 @@ nav ul li:hover .dropdown {
         position: absolute;
         right: 20px;
         top: 15px;
+        z-index: 10; /* Keep it on top of other elements */
     }
 
     nav ul {
@@ -123,36 +124,59 @@ nav ul li:hover .dropdown {
         position: static;
     }
 
+    nav ul li:hover .dropdown {
+        display: none;
+    }
+
     nav ul li .dropdown.show {
         display: flex;
     }
+    
+    /* Fix for logo and menu overlap */
+    header {
+        position: relative;
+        z-index: 1;
+    }
+
+    .logo {
+        z-index: 5;
+        position: relative;
+    }
 }
 
-/* Show dropdown on mobile when clicked */
-@media (max-width: 768px) {
-    nav ul li a {
-        cursor: pointer;
-    }
+/* Design for dropdown inside mobile menu */
+nav ul li .dropdown {
+    background-color: #444;
+    text-align: center;
+    margin-top: 5px;
+    padding: 0;
+}
 
-    nav ul li a:focus + .dropdown {
-        display: block;
-    }
+nav ul li .dropdown li a {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+}
+
+/* Hamburger menu items styling for better look */
+nav ul li a {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 20px;
+    color: #fff;
+}
+
+/* Better padding for dropdown items */
+nav ul li .dropdown li a {
+    padding: 12px 20px;
 }
 
 /* For larger screens: Ensure the hamburger menu is visible */
 @media (min-width: 769px) {
     .hamburger {
-        display: flex;
-        position: absolute;
-        right: 20px;
-        top: 15px;
-    }
-
-    nav ul {
         display: none;
     }
 
-    nav ul.show {
+    nav ul {
         display: flex;
     }
 }
@@ -298,33 +322,34 @@ nav ul li:hover .dropdown {
 <body>
 
     <!-- Header -->
-<header>
-    <div class="logo">
-        <h1>Adarsh Ramleela Committee Ara Khurd</h1>
-    </div>
-    <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+    <header>
+        <div class="logo">
+            <h1>Adarsh Ramleela Committee Ara Khurd</h1>
         </div>
-        <ul id="menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#schedule">Schedule</a></li>
-            <li>
-                <a href="#">More</a>
-                <ul class="dropdown">
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#team">Cast & Crew</a></li>
-                    <li><a href="#committee">Committee</a></li>
-                    <li><a href="#thanks">Special Thanks</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</header>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li class="more-item">
+                    <a href="#">More</a>
+                    <ul class="dropdown">
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#team">Cast & Crew</a></li>
+                        <li><a href="#committee">Committee</a></li>
+                        <li><a href="#thanks">Special Thanks</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
 
           
 
@@ -433,20 +458,18 @@ nav ul li:hover .dropdown {
 
 <script>
 
-function toggleMenu() {
-    var menu = document.getElementById("menu");
-    menu.classList.toggle("show");
-}
-
-document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", function() {
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+    
+    // Toggle the dropdown under "More" option
+    document.querySelector(".more-item a").addEventListener("click", function(e) {
+        e.preventDefault(); // Prevent the default link behavior
         const dropdown = this.nextElementSibling;
-        if (dropdown && dropdown.classList.contains("dropdown")) {
-            dropdown.classList.toggle("show");
-        }
+        dropdown.classList.toggle("show");
     });
-});
-
+    
 
 </script>
 
