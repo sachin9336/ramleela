@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramleela Event</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f4f4f4;
-        }
+   <style>
 
-      /* General styling for header */
+    /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+/* Header Styling */
 header {
     display: flex;
     justify-content: space-between;
@@ -24,14 +27,17 @@ header {
     color: white;
     position: relative;
     z-index: 5;
+    width: 100%;
 }
 
+/* Fix for the logo and hamburger menu touching */
 .logo h1 {
     font-size: 24px;
     margin: 0;
+    padding-right: 20px;
 }
 
-/* Default navigation styles */
+/* Navigation Styles */
 nav ul {
     display: flex;
     list-style: none;
@@ -58,22 +64,31 @@ nav ul li a {
     left: 0;
     width: 200px;
     z-index: 1;
+    transition: display 0.3s ease;
 }
+
+.dropdown.show {
+    display: block;
+}
+
 
 .dropdown li a {
     padding: 10px 15px;
 }
 
+
+
 nav ul li:hover .dropdown {
     display: block;
 }
 
-/* Hamburger icon styling */
+/* Hamburger Menu Styling */
 .hamburger {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    z-index: 6; /* Ensures it stays above other elements */
+    z-index: 6;
+    margin-left: auto;
 }
 
 .hamburger span {
@@ -84,13 +99,13 @@ nav ul li:hover .dropdown {
     border-radius: 2px;
 }
 
-/* Responsive styling for mobile */
+/* Responsive Styling */
 @media (max-width: 768px) {
     .hamburger {
         position: absolute;
-        right: 3px;
-        top: 15px;
-        z-index: 10; /* Keep it on top of other elements */
+        right: 20px;
+        top: 10px;
+        z-index: 10;
     }
 
     nav ul {
@@ -124,27 +139,28 @@ nav ul li:hover .dropdown {
         position: static;
     }
 
-    nav ul li:hover .dropdown {
-        display: none;
-    }
-
     nav ul li .dropdown.show {
         display: flex;
     }
-    
-    /* Fix for logo and menu overlap */
+
     header {
         position: relative;
         z-index: 1;
+        background-color: #333;
     }
 
     .logo {
         z-index: 5;
         position: relative;
     }
+
+    .logo h1 {
+        font-size: 18px;
+        padding-right: 40px;
+    }
 }
 
-/* Design for dropdown inside mobile menu */
+/* Design for Dropdown Inside Mobile Menu */
 nav ul li .dropdown {
     background-color: #444;
     text-align: center;
@@ -157,7 +173,7 @@ nav ul li .dropdown li a {
     border-bottom: 1px solid #555;
 }
 
-/* Hamburger menu items styling for better look */
+/* Hamburger Menu Items Styling */
 nav ul li a {
     font-size: 18px;
     font-weight: bold;
@@ -165,12 +181,12 @@ nav ul li a {
     color: #fff;
 }
 
-/* Better padding for dropdown items */
+/* Padding and Styling for Dropdown Items */
 nav ul li .dropdown li a {
     padding: 12px 20px;
 }
 
-/* For larger screens: Ensure the hamburger menu is visible */
+/* For Larger Screens */
 @media (min-width: 769px) {
     .hamburger {
         display: none;
@@ -181,143 +197,149 @@ nav ul li .dropdown li a {
     }
 }
 
+/* Hero Section */
+.hero {
+    background-image: url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: rgb(252, 247, 247);
+    text-align: center;
+    padding: 150px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 50px;
+    display: inline-block;
+    border-radius: 10px;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Section Styles */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Gallery Container */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery-container img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Team and Committee Containers */
+.team-container, .committee-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-member, .committee-member {
+    text-align: center;
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+.team-member img, .committee-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.team-member img:hover, .committee-member img:hover {
+    transform: scale(1.05);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    font-size: 1em;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Hero Section Text Styles */
+.hero-content h2, .hero-content p {
+    color: #f4f4f4;
+}
 
 
-        .hero {
-            background-image: url('images/hero.jpg');
-            background-size: cover;
-            background-position: center;
-            color: rgb(252, 247, 247);
-            text-align: center;
-            padding: 150px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 50px;
-            display: inline-block;
-            border-radius: 10px;
-            animation: fadeIn 2s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .gallery-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .gallery-container img {
-            width: 100%;
-            max-width: 350px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .gallery-container img:hover {
-            transform: scale(1.05);
-        }
-
-        .team-container, .committee-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .team-member, .committee-member {
-            text-align: center;
-            width: 300px;
-            margin-bottom: 30px;
-        }
-
-        .team-member img, .committee-member img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .team-member img:hover, .committee-member img:hover {
-            transform: scale(1.05);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        form label {
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        form input, form textarea {
-            margin-bottom: 20px;
-            padding: 10px;
-            font-size: 1em;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        form button {
-            padding: 10px;
-            font-size: 1em;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        form button:hover {
-            background-color: #555;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero-content h2, .hero-content p {
-            color: #f4f4f4;
-        }
-    </style>
+   </style>
 </head>
 <body>
 
@@ -458,19 +480,42 @@ nav ul li .dropdown li a {
 
 <script>
 
-    function toggleMenu() {
-        var menu = document.getElementById("menu");
-        menu.classList.toggle("show");
-    }
-    
-    // Toggle the dropdown under "More" option
-    document.querySelector(".more-item a").addEventListener("click", function(e) {
-        e.preventDefault(); // Prevent the default link behavior
-        const dropdown = this.nextElementSibling;
-        dropdown.classList.toggle("show");
+    document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector("nav ul");
+        const moreMenu = document.querySelector(".dropdown");
+        const moreItem = document.querySelector(".more-item");
+        
+        // Hamburger menu toggle
+        hamburger.addEventListener("click", function () {
+            navMenu.classList.toggle("show");
+        });
+        
+        // More menu toggle
+        moreItem.addEventListener("click", function (e) {
+            e.preventDefault();
+            moreMenu.classList.toggle("show");
+        });
+        
+        // Close the entire menu when a nav item is clicked
+        const navLinks = document.querySelectorAll("nav ul li a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("show");
+                moreMenu.classList.remove("show");
+            });
+        });
+        
+        // Close the moreMenu if clicked outside
+        document.addEventListener("click", function (e) {
+            // Check if click is outside moreMenu and moreItem
+            if (!moreMenu.contains(e.target) && !moreItem.contains(e.target) && !e.target.closest(".more-item")) {
+                moreMenu.classList.remove("show");
+            }
+        });
     });
     
-
+    
 </script>
 
 </html>
