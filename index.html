@@ -14,7 +14,7 @@ body {
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    background-color: #f4f4f4;
+    background-color: orange;
 }
 
 /* Header Styling */
@@ -22,7 +22,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 35px 20px;
     background-color: #333;
     color: white;
     position: relative;
@@ -103,8 +103,8 @@ nav ul li:hover .dropdown {
 @media (max-width: 768px) {
     .hamburger {
         position: absolute;
-        right: 20px;
-        top: 10px;
+        right: 10px;
+        top: 25%;
         z-index: 10;
     }
 
@@ -199,20 +199,21 @@ nav ul li .dropdown li a {
 
 /* Hero Section */
 .hero {
-    background-image: url('images/hero.jpg');
+    background-image: url('sdf');
     background-size: cover;
     background-position: center;
-    color: rgb(252, 247, 247);
+   // color: rgb(252, 247, 247);
     text-align: center;
     padding: 150px 0;
     position: relative;
+    left: 5%;
     overflow: hidden;
+    border: 2px solid red;
 }
 
 .hero-content {
-    background: rgba(0, 0, 0, 0.6);
+   background: rgba(0, 0, 0, 0.6);
     padding: 50px;
-    display: inline-block;
     border-radius: 10px;
     animation: fadeIn 2s;
 }
