@@ -22,6 +22,8 @@ header {
     padding: 10px 20px;
     background-color: #333;
     color: white;
+    position: relative;
+    z-index: 5;
 }
 
 .logo h1 {
@@ -68,9 +70,10 @@ nav ul li:hover .dropdown {
 
 /* Hamburger icon styling */
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
+    z-index: 6; /* Ensure it stays above other elements */
 }
 
 .hamburger span {
@@ -84,11 +87,9 @@ nav ul li:hover .dropdown {
 /* Responsive styling for mobile */
 @media (max-width: 768px) {
     .hamburger {
-        display: flex;
         position: absolute;
         right: 20px;
         top: 15px;
-        z-index: 10;
     }
 
     nav ul {
@@ -100,6 +101,7 @@ nav ul li:hover .dropdown {
         background-color: #333;
         width: 100%;
         text-align: center;
+        z-index: 4;
     }
 
     nav ul li {
@@ -121,10 +123,6 @@ nav ul li:hover .dropdown {
         position: static;
     }
 
-    nav ul li:hover .dropdown {
-        display: none;
-    }
-
     nav ul li .dropdown.show {
         display: flex;
     }
@@ -140,6 +138,25 @@ nav ul li:hover .dropdown {
         display: block;
     }
 }
+
+/* For larger screens: Ensure the hamburger menu is visible */
+@media (min-width: 769px) {
+    .hamburger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+}
+
 
 
         .hero {
@@ -415,7 +432,8 @@ nav ul li:hover .dropdown {
 </body>
 
 <script>
-  function toggleMenu() {
+
+function toggleMenu() {
     var menu = document.getElementById("menu");
     menu.classList.toggle("show");
 }
