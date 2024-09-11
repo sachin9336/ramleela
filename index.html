@@ -90,27 +90,79 @@
             transform: scale(1.05);
         }*/
 
-        /* Gallery container image styles */
-.gallery-container img {
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+/* Gallery section for mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    #gallery .gallery-container {
+        display: flex;
+        flex-wrap: wrap; /* Wrap the images in rows */
+        justify-content: space-between; /* Space between images */
+    }
+
+    /* For the first row with 3 images */
+    .col-4 {
+        width: 30%; /* Adjust the width to 30% for 3 images side by side */
+        margin-bottom: 15px; /* Add space between rows */
+    }
+
+    /* For the second row with 2 images */
+    .col-6 {
+        width: 48%; /* Adjust width for 2 images side by side */
+        margin-bottom: 15px; /* Add space between rows */
+    }
+
+    /* More Photos Button Styling */
+    .more-photos {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .more-photos button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
 }
 
-.gallery-container img:hover {
-    transform: scale(1.05);
+
+/* Ensure team members are always displayed side by side on all screen sizes */
+#team .team-container {
+    display: flex; /* Make the container a flexbox */
+    justify-content: space-between; /* Space between the items */
+    flex-wrap: nowrap; /* Prevent wrapping, ensuring all items stay on the same row */
 }
 
-/* Team member image styles */
+/* Flexbox styling for team members in two rows */
+.team-container {
+    display: flex;
+    justify-content: space-between; /* Even space between team members */
+    flex-wrap: nowrap; /* Ensure side by side layout */
+    margin-bottom: 30px; /* Space between the two rows */
+}
+
+.team-member {
+    width: 48%; /* Make each team member take 48% of the row */
+    text-align: center;
+    margin-bottom: 30px; /* Add space at the bottom */
+}
+
 .team-member img {
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    width: 100%; /* Image takes full width of the container */
+    height: auto; /* Maintain aspect ratio */
 }
 
-.team-member img:hover {
-    transform: scale(1.05);
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .team-container {
+        flex-direction: column; /* Stack team members vertically on smaller screens */
+        align-items: center;
+    }
+
+    .team-member {
+        width: 80%; /* Make each member take 80% of the width on smaller screens */
+        margin-bottom: 20px;
+    }
 }
+
+
 
 
 /* Committee member container with updated background and horizontal alignment */
@@ -234,44 +286,74 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-5 text-center">
-        <div class="container">
-            <h2>Gallery</h2>
-            <div class="row gallery-container">
-                <div class="col-md-4">
-                    <img src="event.jpeg" class="img-fluid" alt="Ramleela Scene 1">
-                </div>
-                <div class="col-md-4">
-                    <img src="e2.jpeg" class="img-fluid" alt="Ramleela Scene 2">
-                </div>
+<!-- Gallery Section -->
+<section id="gallery" class="py-5 text-center">
+    <div class="container">
+        <h2>Gallery</h2>
+        <div class="row gallery-container">
+            <!-- First Row: 3 Images Side by Side -->
+            <div class="col-4">
+                <img src="event1.jpeg" class="img-fluid" alt="Ramleela Scene 1">
+            </div>
+            <div class="col-4">
+                <img src="event2.jpeg" class="img-fluid" alt="Ramleela Scene 2">
+            </div>
+            <div class="col-4">
+                <img src="event3.jpeg" class="img-fluid" alt="Ramleela Scene 3">
             </div>
         </div>
-    </section>
 
-    <!-- Cast & Crew Section -->
-    <section id="team" class="py-5 bg-light text-center">
-        <div class="container">
-            <h2>Meet the Cast & Crew</h2>
-            <div class="row">
-                <div class="col-md-4 team-member">
-                    <img src="ram.jpeg" class="img-fluid" alt="Rama">
-                    <h3>Rama</h3>
-                    <p>Shivam Pandey</p>
-                </div>
-                <div class="col-md-4 team-member">
-                    <img src="sita.jpeg" class="img-fluid" alt="Sita">
-                    <h3>Sita</h3>
-                    <p>Played by Actor Name</p>
-                </div>
-                <div class="col-md-4 team-member">
-                    <img src="lakhan.jpeg" class="img-fluid" alt="Lakshman">
-                    <h3>Lakshman</h3>
-                    <p>Pratik Dubey</p>
-                </div>
+        <!-- Second Row: 2 Images Side by Side -->
+        <div class="row gallery-container">
+            <div class="col-6">
+                <img src="event4.jpeg" class="img-fluid" alt="Ramleela Scene 4">
+            </div>
+            <div class="col-6">
+                <img src="event5.jpeg" class="img-fluid" alt="Ramleela Scene 5">
             </div>
         </div>
-    </section>
+
+        <!-- More Photos Button -->
+        <div class="more-photos">
+            <button class="btn btn-primary mt-3">More Photos</button>
+        </div>
+    </div>
+</section>
+
+<!-- Cast & Crew Section -->
+<section id="team" class="py-5 bg-light text-center">
+    <div class="container">
+        <h2>Meet the Cast & Crew</h2>
+        <div class="row team-container">
+            <!-- Row 1: Rama and Sita -->
+            <div class="col-md-6 team-member">
+                <img src="ram.jpeg" class="img-fluid" alt="Rama">
+                <h3>Rama</h3>
+                <p>Shivam Pandey</p>
+            </div>
+            <div class="col-md-6 team-member">
+                <img src="sita.jpeg" class="img-fluid" alt="Sita">
+                <h3>Sita</h3>
+                <p>Played by Actor Name</p>
+            </div>
+        </div>
+        
+        <div class="row team-container">
+            <!-- Row 2: Lakshman and Hanuman -->
+            <div class="col-md-6 team-member">
+                <img src="lakhan.jpeg" class="img-fluid" alt="Lakshman">
+                <h3>Lakshman</h3>
+                <p>Pratik Dubey</p>
+            </div>
+            <div class="col-md-6 team-member">
+                <img src="hanuman.jpeg" class="img-fluid" alt="Hanuman">
+                <h3>Hanuman</h3>
+                <p>Actor Name</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- Committee Section -->
     <section id="committee" class="py-5 text-center">
