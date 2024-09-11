@@ -4,543 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramleela Event</title>
-   <style>
 
-    /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: orange;
-}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom Styles */
+        .hero {
+            background-image: url('images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fcf7f7;
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 50px;
+            display: inline-block;
+            border-radius: 10px;
+            animation: fadeIn 2s;
+        }
 
-/* Header Styling */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 35px 20px;
-    background-color: #333;
-    color: white;
-    position: relative;
-    z-index: 5;
-    width: 100%;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-/* Fix for the logo and hamburger menu touching */
-.logo h1 {
-    font-size: 24px;
-    margin: 0;
-    padding-right: 20px;
-}
+        .gallery-container img, .team-member img, .committee-member img {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
 
-/* Navigation Styles */
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    position: relative;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    display: block;
-}
-
-.dropdown {
-    display: none;
-    position: absolute;
-    background-color: #444;
-    top: 100%;
-    left: 0;
-    width: 200px;
-    z-index: 1;
-    transition: display 0.3s ease;
-}
-
-.dropdown.show {
-    display: block;
-}
-
-
-.dropdown li a {
-    padding: 10px 15px;
-}
-
-
-
-nav ul li:hover .dropdown {
-    display: block;
-}
-
-/* Hamburger Menu Styling */
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 6;
-    margin-left: auto;
-}
-
-.hamburger span {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 5px 0;
-    border-radius: 2px;
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-    .hamburger {
-        position: absolute;
-        right: 10px;
-        top: 25%;
-        z-index: 10;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #333;
-        width: 100%;
-        text-align: center;
-        z-index: 4;
-    }
-
-    nav ul li {
-        width: 100%;
-    }
-
-    nav ul li a {
-        padding: 15px;
-        border-bottom: 1px solid #444;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    .dropdown {
-        display: none;
-        flex-direction: column;
-        position: static;
-    }
-
-    nav ul li .dropdown.show {
-        display: flex;
-    }
-
-    header {
-        position: relative;
-        z-index: 1;
-        background-color: #333;
-    }
-
-    .logo {
-        z-index: 5;
-        position: relative;
-    }
-
-    .logo h1 {
-        font-size: 18px;
-        padding-right: 40px;
-    }
-}
-
-/* Design for Dropdown Inside Mobile Menu */
-nav ul li .dropdown {
-    background-color: #444;
-    text-align: center;
-    margin-top: 5px;
-    padding: 0;
-}
-
-nav ul li .dropdown li a {
-    padding: 10px;
-    border-bottom: 1px solid #555;
-}
-
-/* Hamburger Menu Items Styling */
-nav ul li a {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px 20px;
-    color: #fff;
-}
-
-/* Padding and Styling for Dropdown Items */
-nav ul li .dropdown li a {
-    padding: 12px 20px;
-}
-
-/* For Larger Screens */
-@media (min-width: 769px) {
-    .hamburger {
-        display: none;
-    }
-
-    nav ul {
-        display: flex;
-    }
-}
-
-/* Hero Section */
-.hero {
-    background-image: url('sdf');
-    background-size: cover;
-    background-position: center;
-   // color: rgb(252, 247, 247);
-    text-align: center;
-    padding: 150px 0;
-    position: relative;
-    left: 5%;
-    overflow: hidden;
-    border: 2px solid red;
-}
-
-.hero-content {
-   background: rgba(0, 0, 0, 0.6);
-    padding: 50px;
-    border-radius: 10px;
-    animation: fadeIn 2s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Section Styles */
-section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #333;
-  border: 2px solid green;
-}
-
-/* Gallery Container */
-.gallery-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.gallery-container img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.gallery-container img:hover {
-    transform: scale(1.05);
-}
-
-/* Team and Committee Containers */
-.team-container, .committee-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.team-member, .committee-member {
-    text-align: center;
-    width: 300px;
-    margin-bottom: 30px;
-}
-
-.team-member img, .committee-member img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.team-member img:hover, .committee-member img:hover {
-    transform: scale(1.05);
-}
-
-  /* Mobile styling for the Committee Section */
-@media (max-width: 768px) {
-    .committee-container {
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: center;    /* Center items horizontally */
-    }
-
-    .committee-member {
-        text-align: center;
-        width: 90%; /* Reduce width for mobile */
-        margin-bottom: 20px; /* Add space between items */
-    }
-
-    .committee-member img {
-        width: 80%;  /* Make image responsive */
-        max-width: 200px; /* Limit maximum size */
-        height: auto;
-        margin: 0 auto;  /* Center the image */
-        display: block;  /* Ensure it's treated as a block */
-    }
-}
-
-/* Form Styles */
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-form input, form textarea {
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-form button {
-    padding: 10px;
-    font-size: 1em;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form button:hover {
-    background-color: #555;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Hero Section Text Styles */
-.hero-content h2, .hero-content p {
-    color: #f4f4f4;
-}
-
-
-   </style>
+        .gallery-container img:hover, .team-member img:hover, .committee-member img:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <h1>Adarsh Ramleela Committee Ara Khurd</h1>
-        </div>
-        <nav>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul id="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li class="more-item">
-                    <a href="#">More</a>
-                    <ul class="dropdown">
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#team">Cast & Crew</a></li>
-                        <li><a href="#committee">Committee</a></li>
-                        <li><a href="#thanks">Special Thanks</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Adarsh Ramleela Committee</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#schedule">Schedule</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#gallery">Gallery</a>
+                        <a class="dropdown-item" href="#team">Cast & Crew</a>
+                        <a class="dropdown-item" href="#committee">Committee</a>
+                        <a class="dropdown-item" href="#thanks">Special Thanks</a>
+                        <a class="dropdown-item" href="#contact">Contact</a>
+                    </div>
                 </li>
             </ul>
-        </nav>
-    </header>
-    
-
-          
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h2>Welcome to the Ramleela Celebration</h2>
-            <p>Join us to relive the epic story of Lord Rama.</p>
-            <a href="#schedule" class="btn">View Schedule</a>
+        <div class="container">
+            <div class="hero-content text-white">
+                <h2>Welcome to the Ramleela Celebration</h2>
+                <p>Join us to relive the epic story of Lord Rama.</p>
+                <a href="#schedule" class="btn btn-primary">View Schedule</a>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <h2>About Ramleela</h2>
-        <p>Ramleela is an annual enactment of the life of Lord Rama...</p>
+    <section id="about" class="py-5 text-center">
+        <div class="container">
+            <h2>About Ramleela</h2>
+            <p>Ramleela is an annual enactment of the life of Lord Rama...</p>
+        </div>
     </section>
 
     <!-- Event Schedule -->
-    <section id="schedule">
-        <h2>Event Schedule</h2>
-        <ul>
-            <li><strong>Day 1:</strong> Introduction & The Story Begins - 7:00 PM</li>
-            <li><strong>Day 2:</strong> The Exile of Lord Rama - 7:00 PM</li>
-            <li><strong>Day 3:</strong> Hanuman's Journey to Lanka - 7:00 PM</li>
-        </ul>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery-container">
-            <img src="event.jpeg" alt="Ramleela Scene 1">
-            <img src="e2.jpeg" alt="Ramleela Scene 2">
+    <section id="schedule" class="py-5 bg-light text-center">
+        <div class="container">
+            <h2>Event Schedule</h2>
+            <ul class="list-unstyled">
+                <li><strong>Day 1:</strong> Introduction & The Story Begins - 7:00 PM</li>
+                <li><strong>Day 2:</strong> The Exile of Lord Rama - 7:00 PM</li>
+                <li><strong>Day 3:</strong> Hanuman's Journey to Lanka - 7:00 PM</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Cast & Crew -->
-    <section id="team">
-        <h2>Meet the Cast & Crew</h2>
-        <div class="team-container">
-            <div class="team-member">
-                <img src="ram.jpeg" alt="Rama">
-                <h3>Rama</h3>
-                <p>Shivam Pandey</p>
-            </div>
-            <div class="team-member">
-                <img src="sita.jpeg" alt="Sita">
-                <h3>Sita</h3>
-                <p>Played by Actor Name</p>
-            </div>
-            <div class="team-member">
-                <img src="lakhan.jpeg" alt="Lakshman">
-                <h3>Lakshman</h3>
-                <p>Pratik Dubey</p>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 text-center">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="row gallery-container">
+                <div class="col-md-4">
+                    <img src="event.jpeg" class="img-fluid" alt="Ramleela Scene 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="e2.jpeg" class="img-fluid" alt="Ramleela Scene 2">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Committee Section (Chairman & Financier) -->
-    <section id="committee">
-        <h2>Committee Members</h2>
-        <div class="committee-container">
-            <!-- Chairman -->
-            <div class="committee-member">
-                <img src="chairman.jpeg" alt="Chairman">
-                <h3>Satya Prakash Dubey</h3>
-                <p>Chairman of Ramleela Committee</p>
+    <!-- Cast & Crew Section -->
+    <section id="team" class="py-5 bg-light text-center">
+        <div class="container">
+            <h2>Meet the Cast & Crew</h2>
+            <div class="row">
+                <div class="col-md-4 team-member">
+                    <img src="ram.jpeg" class="img-fluid" alt="Rama">
+                    <h3>Rama</h3>
+                    <p>Shivam Pandey</p>
+                </div>
+                <div class="col-md-4 team-member">
+                    <img src="sita.jpeg" class="img-fluid" alt="Sita">
+                    <h3>Sita</h3>
+                    <p>Played by Actor Name</p>
+                </div>
+                <div class="col-md-4 team-member">
+                    <img src="lakhan.jpeg" class="img-fluid" alt="Lakshman">
+                    <h3>Lakshman</h3>
+                    <p>Pratik Dubey</p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Financier -->
-            <div class="committee-member">
-                <img src="Financier.jpeg" alt="Financier">
-                <h3>Eshwar Chand Pandey</h3>
-                <p>Chief Financier of Ramleela Event</p>
+    <!-- Committee Section -->
+    <section id="committee" class="py-5 text-center">
+        <div class="container">
+            <h2>Committee Members</h2>
+            <div class="row">
+                <div class="col-md-6 committee-member">
+                    <img src="chairman.jpeg" class="img-fluid" alt="Chairman">
+                    <h3>Satya Prakash Dubey</h3>
+                    <p>Chairman of Ramleela Committee</p>
+                </div>
+                <div class="col-md-6 committee-member">
+                    <img src="Financier.jpeg" class="img-fluid" alt="Financier">
+                    <h3>Eshwar Chand Pandey</h3>
+                    <p>Chief Financier of Ramleela Event</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Special Thanks Section -->
-    <section id="thanks">
-        <h2>Special Thanks</h2>
-        <p>We would like to extend our heartfelt gratitude to all the gram vashi (villagers) and everyone who has provided physical and financial support to make this event a success.</p>
+    <section id="thanks" class="py-5 bg-light text-center">
+        <div class="container">
+            <h2>Special Thanks</h2>
+            <p>We would like to extend our heartfelt gratitude to all the gram vashi (villagers) and everyone who has provided physical and financial support to make this event a success.</p>
+        </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <section id="contact" class="py-5 text-center">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="mx-auto" style="max-width: 500px;">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark btn-block">Send Message</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="bg-dark text-white text-center">
         <p>© 2024 Ramleela Committee. All Rights Reserved.</p>
     </footer>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
-<script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector("nav ul");
-        const moreMenu = document.querySelector(".dropdown");
-        const moreItem = document.querySelector(".more-item");
-        
-        // Hamburger menu toggle
-        hamburger.addEventListener("click", function () {
-            navMenu.classList.toggle("show");
-        });
-        
-        // More menu toggle
-        moreItem.addEventListener("click", function (e) {
-            e.preventDefault();
-            moreMenu.classList.toggle("show");
-        });
-        
-        // Close the entire menu when a nav item is clicked
-        const navLinks = document.querySelectorAll("nav ul li a");
-        navLinks.forEach(link => {
-            link.addEventListener("click", function () {
-                navMenu.classList.remove("show");
-                moreMenu.classList.remove("show");
-            });
-        });
-        
-        // Close the moreMenu if clicked outside
-        document.addEventListener("click", function (e) {
-            // Check if click is outside moreMenu and moreItem
-            if (!moreMenu.contains(e.target) && !moreItem.contains(e.target) && !e.target.closest(".more-item")) {
-                moreMenu.classList.remove("show");
-            }
-        });
-    });
-    
-    
-</script>
-
 </html>
