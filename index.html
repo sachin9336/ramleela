@@ -8,25 +8,72 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Custom Styles */
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        /* Hero Section */
         .hero {
-            background-image: url('images/hero.jpg');
-            background-size: cover;
-            background-position: center;
-            color: #fcf7f7;
-            text-align: center;
-            padding: 150px 0;
             position: relative;
             overflow: hidden;
+            color: #fcf7f7;
+            text-align: center;
+            padding: 150px 20px; /* Adjust padding to fit border radius */
+            height: 100vh; /* Full viewport height */
+            border: 5px solid #fff; /* Add border */
+            border-radius: 20px; /* Add border radius */
+          
         }
-        
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+            z-index: -1; /* Place behind the video and content */
+            border-radius: 20px; /* Match border radius */
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Ensure video is behind the overlay */
+            filter: brightness(1.4); /* Optional: Darken video for better text visibility */
+        }
+
         .hero-content {
-            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1; /* Ensure content is above video and overlay */
+            background: rgba(0, 0, 0, 0.6); /* Overlay background */
             padding: 50px;
-            display: inline-block;
             border-radius: 10px;
+            display: inline-block;
             animation: fadeIn 2s;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-content h2, .hero-content p {
+            color: #f4f4f4;
+        }
+    
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -85,6 +132,8 @@
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
     transition: transform 0.3s; /* Hover effect */
+    position: relative;
+    left: 20px;
     width: 30%; /* Ensures images are side by side (3 in a row for larger screens) */
 }
 
@@ -106,6 +155,7 @@
     }
 }
 
+
         
         footer {
             background-color: #333;
@@ -119,7 +169,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Adarsh Ramleela Committee</a>
+        <a class="navbar-brand" href="#">Adarsh Ramleela Committee Ara Khurd</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -151,15 +201,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content text-white">
-                <h2>Welcome to the Ramleela Celebration</h2>
-                <p>Join us to relive the epic story of Lord Rama.</p>
-                <a href="#schedule" class="btn btn-primary">View Schedule</a>
-            </div>
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="bgvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h2>Welcome to the Ramleela Celebration</h2>
+            <p>Join us to relive the epic story of Lord Rama.</p>
+            <a href="#schedule" class="btn">View Schedule</a>
         </div>
     </section>
+   
 
     <!-- About Section -->
     <section id="about" class="py-5 text-center">
