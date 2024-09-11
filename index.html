@@ -33,7 +33,7 @@
             to { opacity: 1; }
         }
 
-        .gallery-container img, .team-member img, .committee-member img {
+        /*.gallery-container img, .team-member img, .committee-member img {
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
@@ -41,7 +41,71 @@
 
         .gallery-container img:hover, .team-member img:hover, .committee-member img:hover {
             transform: scale(1.05);
-        }
+        }*/
+
+        /* Gallery container image styles */
+.gallery-container img {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Team member image styles */
+.team-member img {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.team-member img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Committee member container with updated background and horizontal alignment */
+.committee-container {
+    display: flex;
+    justify-content: center; /* Centers images horizontally */
+    align-items: center;
+    gap: 20px; /* Adds space between images */
+    background-color: #e0e0e0; /* Updated background color */
+    padding: 40px; /* Padding around the container */
+    border-radius: 10px; /* Rounds the edges of the container */
+    flex-wrap: wrap; /* Ensures that content wraps to the next line if needed */
+}
+
+/* Committee member image styles */
+.committee-member {
+    background-color: white; /* White background for each image block */
+    padding: 20px; /* Padding around the image */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
+    transition: transform 0.3s; /* Hover effect */
+    width: 30%; /* Ensures images are side by side (3 in a row for larger screens) */
+}
+
+/* Committee member image hover effect */
+.committee-member:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    .committee-member {
+        width: 45%; /* Adjusts width to fit 2 images side by side on mobile */
+        margin-bottom: 20px; /* Adds some space below each image */
+    }
+
+    .committee-container {
+        justify-content: space-around; /* Adjusts layout for better spacing on mobile */
+        background-color: #d3d3d3; /* Slightly different background for mobile */
+    }
+}
+
         
         footer {
             background-color: #333;
