@@ -257,6 +257,32 @@ section h2 {
     transform: scale(1.05);
 }
 
+/* Team and Committee Containers */
+.team-container, .committee-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-member, .committee-member {
+    text-align: center;
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+.team-member img, .committee-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.team-member img:hover, .committee-member img:hover {
+    transform: scale(1.05);
+}
+
   /* Mobile styling for the Committee Section */
 @media (max-width: 768px) {
     .committee-container {
@@ -279,8 +305,6 @@ section h2 {
         display: block;  /* Ensure it's treated as a block */
     }
 }
-
-  
 
 /* Form Styles */
 form {
